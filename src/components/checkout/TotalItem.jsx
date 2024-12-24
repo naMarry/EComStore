@@ -68,7 +68,7 @@ export default function TotalItem() {
         <div>
             <p className='mb-3 d-flex justify-content-end'>Summery Order</p>
             <div >
-                <ul className='d-flex flex-column gap-3 rounded-4 p-4 shadow border-0' style={{ backgroundColor: '#f3f3f3' }}>
+                <ul className='d-flex flex-column gap-3'>
                     {selectedProducts.length > 0 ?
                         selectedProducts.map((product, index) =>
                             <li className='d-flex'>

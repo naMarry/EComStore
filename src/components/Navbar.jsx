@@ -1,134 +1,86 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import assets from '../assets/images/assets';
-import ToggleCart from './navbar/ToggleCart';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ProductContext } from '../context/ProductContext';
 
 export default function Navbar() {
-
     const { totalPrice } = useContext(ProductContext);
+    
+    const [activeMenu, setActiveMenu] = useState('home');
 
-    const navigate = useNavigate();
-
-    const goToFeaturePage = (feature) => {
-        navigate('/feature-pro', { state: { feature } });
+    const handleMenuClick = (menuItem) => {
+        setActiveMenu(menuItem);
     };
 
     return (
-        <>
-            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
-                <div class="offcanvas-header justify-content-center">
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ToggleCart />
+        <header className="header">
+            <div className="header__top">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 col-md-7">
+                            <div className="header__top__left">
+                                <p>Free shipping, 30-day return or refund guarantee.</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-6 col-md-5">
+                            <div className="header__top__right">
+                                <div className="header__top__links">
+                                    <Link to='/signin'>Sign in</Link>
+                                    <Link>FAQs</Link>
+                                </div>
+                                <div className="header__top__hover">
+                                    <span>USD <i className="arrow_carrot-down"></i></span>
+                                    <ul>
+                                        <li>USD</li>
+                                        <li>EUR</li>
+                                        <li>USD</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <header>
-                <div class="container-fluid">
-                    <div class="row py-3 border-bottom">
-
-                        <div class="col-sm-4 col-lg-3 text-center text-sm-start">
-                            <div class="main-logo">
-                                <Link to='/'>
-                                    <img src={assets.logo} alt="logo" class="img-fluid" style={{ width: "200px" }} />
-                                </Link>
-                            </div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-3 col-md-3">
+                        <div className="header__logo py-2">
+                            <Link className='px-0 nav-link fs-3 fw-bold d-flex align-items-end' to='/'>Liheng Shop <div className='bg-danger mb-2 ms-1' style={{ width: '5px', height: '5px' }}></div></Link>
                         </div>
-
-                        <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-5 d-none d-lg-block">
-                            <div class="search-bar row bg-light p-2 my-2 rounded-4">
-                                <div class="col-md-4 d-none d-md-block">
-                                    <select
-                                        onChange={(e) => goToFeaturePage(e.target.value)}
-                                        class="form-select border-0 bg-transparent">
-                                        <option disabled>Find Clothing</option>
-                                        <option value="men's clothing">Men Clothes</option>
-                                        <option value="women's clothing">Women Clothes</option>
-                                    </select>
-                                </div>
-                                <div class="col-11 col-md-7">
-                                    <form id="search-form" class="text-center" action="index.html" method="post">
-                                        <input type="text" class="form-control border-0 bg-transparent" placeholder="Search for more than 20,000 products" />
-                                    </form>
-                                </div>
-                                <div class="col-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" /></svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-8 col-lg-4 d-flex justify-content-end gap-5 align-items-center mt-4 mt-sm-0 justify-content-center justify-content-sm-end">
-                            <div class="support-box text-end d-none d-xl-block">
-                                <span class="fs-6 text-muted">For Support?</span>
-                                <h5 class="mb-0">+980-34984089</h5>
-                            </div>
-
-                            <ul class="d-flex justify-content-end list-unstyled m-0">
-                                <li>
-                                    <Link to='/login' href="#" class="rounded-circle bg-light p-2 mx-1">
-                                        <i class="bi bi-person text-black"></i>
-                                    </Link>
+                    </div>
+                    <div className="col-lg-6 col-md-6">
+                        <nav className="header__menu mobile-menu">
+                            <ul>
+                                <li className={activeMenu === 'home' ? 'active' : ''}>
+                                    <Link to='/' onClick={() => handleMenuClick('home')}>Home</Link>
                                 </li>
-                                <li class="d-lg-none">
-                                    <Link href="#" class="rounded-circle bg-light p-2 mx-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-                                        <i class="bi bi-list text-black "></i>
-                                    </Link>
+                                <li className={activeMenu === 'shop' ? 'active' : ''}>
+                                    <Link to='/shop' onClick={() => handleMenuClick('shop')}>Shop</Link>
+                                </li>
+                                <li className={activeMenu === 'pages' ? 'active' : ''}>
+                                    <Link onClick={() => handleMenuClick('pages')}>Pages</Link>
+                                    <ul className="dropdown">
+                                        <li><Link to='/error'>About Us</Link></li>
+                                        <li><Link to='/error'>Shop Details</Link></li>
+                                        <li><Link to='/error'>Shopping Cart</Link></li>
+                                        <li><Link to='/error'>Check Out</Link></li>
+                                    </ul>
+                                </li>
+                                <li className={activeMenu === 'contact' ? 'active' : ''}>
+                                    <Link to='/contact' onClick={() => handleMenuClick('contact')}>Contacts</Link>
                                 </li>
                             </ul>
-
-                            <div class="cart text-end d-none d-lg-block dropdown">
-                                <button class="border-0 bg-transparent d-flex flex-column gap-2 lh-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-                                    <span class="fs-6 text-muted dropdown-toggle">Your Cart</span>
-                                    <span class="cart-total fs-5 fw-bold">{totalPrice}$</span>
-                                </button>
-                            </div>
-                        </div>
-
+                        </nav>
                     </div>
-                </div>
-                <div class="container-fluid">
-                    <div class="row py-3">
-                        <div class="d-flex  justify-content-center justify-content-sm-between align-items-center">
-                            <div class="main-menu d-flex navbar navbar-expand-lg">
-
-                                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                                    aria-controls="offcanvasNavbar">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                                    <div class="offcanvas-header justify-content-center">
-                                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                    </div>
-                                    <div class="offcanvas-body">
-                                        <select
-                                            onChange={(e) => goToFeaturePage(e.target.value)}
-                                            class="filter-categories border-0 mb-0 me-5">
-                                            <option disabled>Others</option>
-                                            <option value="jewelery">Jewelery</option>
-                                            <option value="electronic">Electronics</option>
-                                        </select>
-
-                                        <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
-                                            <li class="nav-item active">
-                                                <Link to='/shops' class="nav-link">Products</Link>
-                                            </li>
-                                            <li class="nav-item">
-                                                <Link to='/about' class="nav-link">About</Link>
-                                            </li>
-                                            <li class="nav-item">
-                                                <Link to='/contact' class="nav-link">Contact</Link>
-                                            </li>
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="col-lg-3 col-md-3">
+                        <div className="header__nav__option py-3">
+                            <Link className="search-switch nav-link p-0"><i className="bi bi-search"></i></Link>
+                            <Link to='/cart' className='nav-link'><i className="bi bi-cart"></i></Link>
+                            <div className="price">${totalPrice}</div>
                         </div>
                     </div>
                 </div>
-            </header>
-        </>
-    )
+                <div className="canvas__open"><i className="fa fa-bars"></i></div>
+            </div>
+        </header>
+    );
 }

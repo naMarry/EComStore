@@ -11,26 +11,7 @@ export const ProductProvider = ({ children }) => {
     const [singleProduct, setSingleProduct] = useState(null);
     const [totalItems, setTotalItems] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
-    const [shippingInfo, setShippingInfo] = useState({
-        fullName: '',
-        address: '',
-        city: '',
-        state: '',
-        postcode: '',
-        country: '',
-        email: '',
-        phone: ''
-    });
 
-    //handling user shipping info
-    const updateShippingInfo = (newInfo) => {
-        setShippingInfo((prevInfo) => ({
-            ...prevInfo,
-            ...newInfo
-        }));
-    };
-
-    // fetch data from api products 
     useEffect(() => {
 
         const loadProducts = async () => {
@@ -52,7 +33,6 @@ export const ProductProvider = ({ children }) => {
         loadProducts();
     }, []);
 
-    //handle single product detail
     const getProductById = async (id) => {
         try {
             const product = await fetchProductsByID(id);
@@ -65,8 +45,11 @@ export const ProductProvider = ({ children }) => {
         }
     };
 
-    // //add to cart btn management
     const [selectedItems, setSelectedItems] = useState({});
+
+    const handleAddToCart = pro_id => {
+        setSelectedItems(prev => ({ ...prev, [pro_id]: (prev[pro_id] || 0) + 1 }))
+    }
 
     const handleRemoveCart = (pro_id) => {
         setSelectedItems((prev) => {
@@ -89,7 +72,6 @@ export const ProductProvider = ({ children }) => {
     }
 
 
-    //overall product price& items count
     useEffect(() => {
         const itemsCount = Object.values(selectedItems).reduce((acc, qty) => acc + qty, 0);
         const priceCount = Object.entries(selectedItems).reduce((acc, [id, qty]) => {
@@ -102,7 +84,7 @@ export const ProductProvider = ({ children }) => {
         setTotalPrice(priceCount.toFixed(2));
     }, [selectedItems, products]);
 
-    //show only the products that was selected
+    
     const selectedProducts = products.filter((product) => selectedItems[product.id] > 0);
 
     return (
@@ -114,17 +96,16 @@ export const ProductProvider = ({ children }) => {
             selectedProducts,
             selectedItems,
             setSelectedItems,
+            handleRemoveCart,
+            handleAddToCart,
             handleDecreaseCart,
             handleIncreaseCart,
-            handleRemoveCart,
             totalItems,
             totalPrice,
             setTotalItems,
             setTotalPrice,
             getProductById,
             singleProduct,
-            shippingInfo,
-            updateShippingInfo
         }}>
             {children}
         </ProductContext.Provider>

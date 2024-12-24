@@ -4,15 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ProductContext } from '../context/ProductContext'
 
 export default function Card({ product, index }) {
-    const {
-        selectedItems,
-        handleDecreaseCart,
-        handleIncreaseCart
-    } = useContext(ProductContext);
+    const { handleAddToCart } = useContext(ProductContext);
 
     //lead to product detail page
     const navigate = useNavigate();
-    
+
     const handleViewProductDetail = () => {
         if (product && product.id) {
             navigate(`/product/${product.id}`);
@@ -22,46 +18,34 @@ export default function Card({ product, index }) {
     }
 
     return (
-        <div className="col" key={index}>
-            <div className="product-item card w-100 mb-5 p-3 rounded-4 shadow border-0 position-relative">
-                <span className="badge bg-success position-absolute m-3">-30%</span>
-                <figure>
-                    <Link to="/index.html" title="Product Title">
-                        <img src={product.image} className="tab-image w-100 object-fit-cover" alt="Product" style={{ height: "280px" }} />
-                    </Link>
-                </figure>
-                <h5 className='two-line-text'>{product.title}</h5>
-                <span className="qty">1 Unit</span>
-                <span className="rating">
-                    <i class="bi bi-star-fill text-warning mx-2 mb-1"></i>
-                    4.5
-                </span>
-                <h3 className="price">{product.price}$</h3>
-                <div className="d-flex align-items-center justify-content-between">
-                    <div className="input-group product-qty d-flex align-items-center" style={{ width: "fit-content" }}>
-                        <span className="input-group-btn">
-                            <button onClick={() => handleDecreaseCart(product.id)}
-                                type="button"
-                                className="quantity-left-minus btn border border-black btn-number"
-                                data-type="minus"
-                            >
-                                -
-                            </button>
-                        </span>
-                        <span className='mx-2'>{selectedItems[product.id] || 0}</span>
-                        <span className="input-group-btn">
-                            <button onClick={() => handleIncreaseCart(product.id)}
-                                type="button"
-                                className="quantity-right-plus border border-black btn btn-number"
-                                data-type="plus"
-                            >
-                                +
-                            </button>
-                        </span>
+        <div className="col-lg-3 mb-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+            <div className="product__item">
+                <div className="product__item__pic set-bg" data-setbg={product.image}>
+                    <span className="label">New</span>
+                    <li><Link to="#"><img src={product.image} alt="" className='object-fit-cover' style={{ width: '220px', height: '280px' }} /></Link></li>
+                </div>
+                <div className="product__item__text mt-5">
+                    <h6>{product.title}</h6>
+                    <Link to="#" className="add-cart" onClick={() => handleAddToCart(product.id)}>+ Add To Cart</Link>
+                    <div className="rating">
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
                     </div>
-                    <button to="#" className="nav-link rounded-3 bg-dark p-2 text-white" onClick={handleViewProductDetail}>
-                        View Detail 
-                    </button>
+                    <h5>{product.price}$</h5>
+                    <div className="product__color__select">
+                        <label htmlFor="pc-1">
+                            <input type="radio" id="pc-1" />
+                        </label>
+                        <label className="active black" htmlFor="pc-2">
+                            <input type="radio" id="pc-2" />
+                        </label>
+                        <label className="grey" htmlFor="pc-3">
+                            <input type="radio" id="pc-3" />
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>

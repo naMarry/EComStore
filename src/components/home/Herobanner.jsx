@@ -1,19 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import assets from '../../assets/images/assets'
 
 export default function Herobanner() {
     return (
-        <section className="py-3" style={{backgroundColor: '#f3f3f3'}}>
-            <div class="container">
-                <div class="row py-4 align-items-center">
-                    <div className="col-12 col-sm-6">
-                        <h1>Best Quality Products</h1>
-                        <p>Lorem ipsum dolor sit amet consect abore magnam, nobis corrupti qui ea facere dolor!</p>
-                        <Link to='/shops' className='py-2 px-3 text-decoration-none mt-2 rounded-3 bg-dark text-white'>Buy Now</Link>
-                    </div>
-                    <div className="col-12 col-sm-6 d-flex justify-content-center">
-                        <img src={assets.homeHero} alt="" className='object-fit-cover rounded-circle' style={{width: '250px', height: '250px'}}/>
+        <section className="home-hero">
+            <div className="container">
+                <div className="row">
+                    <div className="col-xl-5 col-lg-7 col-md-8">
+                        <div className='pt-5 mt-5'>
+                            <h6 className='text-danger fw-meduim'>Summer Collection</h6>
+                            <h2>Fall - Winter Collections 2030</h2>
+                            <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering commitment to exceptional quality.</p>
+                            <Link to='shop' className="primary-btn">Shop now <span className="arrow_right"></span></Link>
+                            <div className="hero__social" style={{ marginTop: '160px', marginBottom: '30px' }}>
+                                <Link ><i className="fa fa-facebook"></i></Link>
+                                <Link><i className="fa fa-twitter"></i></Link>
+                                <Link><i className="fa fa-pinterest"></i></Link>
+                                <Link ><i className="fa fa-instagram"></i></Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

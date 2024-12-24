@@ -1,145 +1,70 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import assets from '../assets/images/assets'
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
     return (
-        <>
-            <footer class="py-5">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="footer-menu">
-                                <img src={assets.logo} alt="logo" style={{ width: "200px" }} />
-                                <div class="social-links mt-5">
-                                    <ul class="d-flex list-unstyled gap-2">
-                                        <li>
-                                            <Link href="#" class="btn btn-outline-light">
-                                                <img src={assets.fb} alt="" className='opacity-75' style={{ width: "20px" }} />
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="#" class="btn btn-outline-light">
-                                                <img src={assets.telegram} alt="" className='opacity-75' style={{ width: "20px" }} />
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="#" class="btn btn-outline-light">
-                                                <img src={assets.twitter} alt="" className='opacity-75' style={{ width: "20px" }} />
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="#" class="btn btn-outline-light">
-                                                <img src={assets.linkedin} alt="" className='opacity-75' style={{ width: "20px" }} />
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
+        <footer className="footer mt-5">
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-3 col-md-6 col-sm-6">
+                        <div className="footer__about">
+                            <div className="footer__logo">
+                                <Link className='nav-link p-0 fs-3 fw-bold d-flex align-items-end text-white' to='/'>Liheng Shop <div className='bg-danger mb-2 ms-1' style={{ width: '5px', height: '5px' }}></div></Link>
                             </div>
+                            <p>The customer is at the heart of our unique business model, which includes design.</p>
                         </div>
-
-                        <div class="col-md-2 col-sm-6">
-                            <div class="footer-menu">
-                                <h5 class="widget-title">Ultras</h5>
-                                <ul class="menu-list list-unstyled">
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">About us</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Conditions </Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Our Journals</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Careers</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Affiliate Programme</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Ultras Press</Link>
-                                    </li>
-                                </ul>
-                            </div>
+                    </div>
+                    <div className="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                        <div className="footer__widget">
+                            <h6>Shopping</h6>
+                            <ul>
+                                <li><Link to="#">Clothing Store</Link></li>
+                                <li><Link to="#">Trending Shoes</Link></li>
+                                <li><Link to="#">Accessories</Link></li>
+                                <li><Link to="#">Sale</Link></li>
+                            </ul>
                         </div>
-                        <div class="col-md-2 col-sm-6">
-                            <div class="footer-menu">
-                                <h5 class="widget-title">Customer Service</h5>
-                                <ul class="menu-list list-unstyled">
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">FAQ</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Contact</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Privacy Policy</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Returns & Refunds</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Cookie Guidelines</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Delivery Information</Link>
-                                    </li>
-                                </ul>
-                            </div>
+                    </div>
+                    <div className="col-lg-2 col-md-3 col-sm-6">
+                        <div className="footer__widget">
+                            <h6>Shopping</h6>
+                            <ul>
+                                <li><Link to="#">Contact Us</Link></li>
+                                <li><Link to="#">Payment Methods</Link></li>
+                                <li><Link to="#">Delivery</Link></li>
+                                <li><Link to="#">Return & Exchanges</Link></li>
+                            </ul>
                         </div>
-                        <div class="col-md-2 col-sm-6">
-                            <div class="footer-menu">
-                                <h5 class="widget-title">Customer Service</h5>
-                                <ul class="menu-list list-unstyled">
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">FAQ</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Contact</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Privacy Policy</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Returns & Refunds</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Cookie Guidelines</Link>
-                                    </li>
-                                    <li class="menu-item">
-                                        <Link href="#" class="nav-link">Delivery Information</Link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="footer-menu">
-                                <h5 class="widget-title">Subscribe Us</h5>
-                                <p>Subscribe to our newsletter to get updates about our grand offers.</p>
-                                <form class="d-flex mt-3 gap-0">
-                                    <input class="form-control rounded-start rounded-0 bg-light" type="email" placeholder="Email Address" aria-label="Email Address" />
-                                    <button class="btn btn-dark rounded-end rounded-0" type="submit">Subscribe</button>
+                    </div>
+                    <div className="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                        <div className="footer__widget">
+                            <h6>Newsletter</h6>
+                            <div className="footer__newslatter">
+                                <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                                <form action="#">
+                                    <input type="text" placeholder="Your email" />
+                                    <button type="submit">
+                                        <span className="icon_mail_alt"></span>
+                                    </button>
                                 </form>
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </footer>
-
-            <div id="footer-bottom">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6 copyright">
-                            <p>© 2023 Foodmart. All rights reserved.</p>
-                        </div>
-                        <div class="col-md-6 credit-link text-start text-md-end">
-                            <p>Free HTML Template by <Link href="https://templatesjungle.com/" className='text-black'>TemplatesJungle</Link> Distributed by <a href="https://themewagon" className='text-black'>ThemeWagon</a></p>
+                <div className="row">
+                    <div className="col-lg-12 text-center">
+                        <div className="footer__copyright__text">
+                            <p>
+                                Copyright © {new Date().getFullYear()} All rights reserved | This template is made
+                                with <i className="fa fa-heart-o" aria-hidden="true"></i> by{" "}
+                                <Link to="https://colorlib.com" target="_blank" rel="noopener noreferrer">
+                                    Colorlib
+                                </Link>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </>
-    )
+        </footer>
+    );
 }

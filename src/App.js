@@ -2,15 +2,14 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-import About from './pages/About';
 import Contact from './pages/Contact';
 import Shop from './pages/Shop';
-import ShopDetail from './pages/ShopDetail';
 import Checkout from './pages/Checkout';
 import { ProductProvider } from './context/ProductContext';
-import ProductFeature from './pages/ProductFeature';
-import LogIn from './pages/LogIn';
+import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Cart from './pages/Cart';
+import Error from './pages/Error';
 
 export default function App() {
   return (
@@ -18,14 +17,13 @@ export default function App() {
       <ProductProvider>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
+          <Route path='/shop' element={<Shop />} />
           <Route path='/contact' element={<Contact />} />
-          <Route path='/shops' element={<Shop />} />
-          <Route path='/feature-pro' element={<ProductFeature/>} />
-          <Route path='/product/:id' element={<ShopDetail />} />
           <Route path='/checkout' element={<Checkout />} />
-          <Route path='/login' element={<LogIn />} />
-          <Route path='/signup' element={<SignUp />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/signup' element={<SignUp />} /> 
+          <Route path='/error' element={<Error/>} />
         </Routes>
       </ProductProvider>
     </BrowserRouter>

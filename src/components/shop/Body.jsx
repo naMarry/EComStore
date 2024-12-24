@@ -1,12 +1,16 @@
-import React from 'react'
-import SortNav from './SortNav'
-import Products from './Products'
+import React from 'react';
+import SideNav from './SideNav';
+import Content from './Content';
 
 export default function Body() {
   return (
-    <section>
-        <SortNav/>
-        <Products/>
+    <section class="shop spad">
+        <div class="container">
+            <div class="row">
+                <SideNav />
+                <Content />
+            </div>
+        </div>
     </section>
   )
 }

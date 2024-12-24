@@ -8,7 +8,7 @@ export default function Checkout() {
   return (
     <>
       <Navbar />
-      <Hero />
+      <Hero/>
       <Content/>
       <Footer />
     </>
